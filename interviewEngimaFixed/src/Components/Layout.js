@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 const Layout = ()=>{
     const data = useSelector(state=>state.data.data)
-    const [selected, setSelected] = useState(["XRP","BCH","LTC"]);
+    const [selected, setSelected] = useState(["BTC", "ETH", "SOL"]);
 
     const onFavorite = (coin, rowItem) => {
         store.dispatch(dataActions.updateData({
@@ -38,12 +38,10 @@ const Layout = ()=>{
            flexDirection:"column"}}>
        
            <ButtonGroup sx= {{backgroundColor: 'black'}} variant="contained" aria-label=" button group" >
-                <Button onClick={() => updatedSelect('XRP')} sx = {selected.includes("XRP")?{backgroundColor:"blue"}:{backgroundColor:'black'}}>XRP</Button>
-                <Button onClick={() => updatedSelect('BCH')} sx = {selected.includes("BCH")?{backgroundColor:"blue"}:{backgroundColor:'black'}}>BCH</Button>
-                <Button onClick={() => updatedSelect('LTC')} sx = {selected.includes("LTC")?{backgroundColor:"blue"}:{backgroundColor:'black'}}>LTC</Button>
+                <Button onClick={() => updatedSelect('BTC')} sx = {selected.includes("BTC")?{backgroundColor:"blue"}:{backgroundColor:'black'}}>BTC</Button>
+                <Button onClick={() => updatedSelect('ETH')} sx = {selected.includes("ETH")?{backgroundColor:"blue"}:{backgroundColor:'black'}}>ETH</Button>
+                <Button onClick={() => updatedSelect('SOL')} sx = {selected.includes("SOL")?{backgroundColor:"blue"}:{backgroundColor:'black'}}>SOL</Button>
             </ButtonGroup>
-                <hr/>
-           
               
     {/* <DataList/> */}
     <StockView data={ data.filter(item => selected.includes(item.title)) }  onFavorite = {onFavorite}/>
